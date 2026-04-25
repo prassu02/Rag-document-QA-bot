@@ -1,9 +1,10 @@
-streamlit
-langchain==0.2.11
-langchain-community==0.2.10
-langchain-groq==0.1.9
-langchain-huggingface==0.0.3
+torch
+torchvision
 faiss-cpu
+streamlit
+langchain
+langchain-community
+langchain-groq
+langchain-huggingface
 sentence-transformers
 pypdf
-python-dotenv
