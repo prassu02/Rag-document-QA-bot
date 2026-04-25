@@ -1,30 +1,32 @@
 import streamlit as st
 from src.rag_chain import answer_question
 
-st.title("RAG Document Q&A Bot")
+st.set_page_config(
+    page_title="RAG Document Q&A Bot",
+    layout="wide"
+)
 
-query = st.text_input("Ask a question from documents")
+st.title("📄 RAG Document Q&A Bot")
+st.write("Ask questions from your uploaded document corpus")
+
+query = st.text_input(
+    "Ask a question",
+    placeholder="What is machine learning?"
+)
 
 if query:
     with st.spinner("Searching documents..."):
-        answer, sources, chunks = answer_question(query)
+        try:
+            answer, sources, chunks = answer_question(query)
 
-    st.subheader("Answer")
-    st.write(answer)
+            st.subheader("Answer")
+            st.write(answer)
 
-    st.subheader("Sources")
+            with st.expander("Retrieved Chunks"):
+                for i,c in enumerate(chunks,1):
+                    st.write(f"Chunk {i}")
+                    st.write(c)
+                    st.divider()
 
-    seen = set()
-
-    for s in sources:
-        src = f"{s.metadata['source']} | Page {s.metadata['page']}"
-        if src not in seen:
-            st.write(src)
-            seen.add(src)
-
-    st.subheader("Retrieved Chunks")
-
-    for i, chunk in enumerate(chunks,1):
-        st.write(f"Chunk {i}")
-        st.write(chunk.page_content[:500])
-        st.write("---")
+        except Exception as e:
+            st.error(f"Error: {str(e)}")
