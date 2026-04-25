@@ -1,5 +1,6 @@
 import os
 import streamlit as st
+from src.rag_chain import get_llm
 
 def get_llm():
 
