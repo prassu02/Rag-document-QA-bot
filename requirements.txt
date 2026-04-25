@@ -1,9 +1,0 @@
-streamlit==1.56.0
-langchain==0.2.11
-langchain-community==0.2.10
-langchain-groq==0.1.9
-langchain-huggingface==0.0.3
-faiss-cpu==1.13.2
-sentence-transformers==5.4.1
-PyMuPDF
-python-dotenv
