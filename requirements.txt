@@ -6,3 +6,4 @@ faiss-cpu==1.13.2
 sentence-transformers
 PyMuPDF
 python-dotenv
+langchain-groq
